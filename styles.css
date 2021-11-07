@@ -1,0 +1,21 @@
+.input {
+    height: 60px;
+    padding-left: -10px;
+  }
+  
+  .forecast {
+    transition: all 0.25s ease-in-out;
+  }
+  .forecast:hover {
+    box-shadow: 0 0 25px 0 rgba(191, 191, 194, 0.4);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .img {
+    transition: all 0.25s ease-in-out;
+  }
+  .wind {
+    color: blue;
+  }
+  
