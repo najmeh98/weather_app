@@ -39,3 +39,11 @@
 .country {
   padding-left: 10px;
 }
+
+.time {
+  font-size: medium;
+}
+
+.size {
+  font-size: 30px;
+}
