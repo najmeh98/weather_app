@@ -1,15 +1,8 @@
 {
-  "name": "parcel-sandbox",
+  "name": "weather-app",
   "version": "1.0.0",
-  "description": "Simple Parcel Sandbox",
-  "main": "index.html",
-  "scripts": {
-    "start": "parcel index.html --open",
-    "build": "parcel build index.html"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "@babel/core": "7.2.0",
-    "parcel-bundler": "^1.6.1"
-  }
+  "main": "index.js",
+  "repository": "https://github.com/najmeh98/weather_app.git",
+  "author": "najmeh98 <foroughi.najmeh98@gmail.com>",
+  "license": "MIT"
 }
