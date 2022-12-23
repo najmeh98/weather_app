@@ -5,10 +5,12 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bootstrap</title>
+  <title>Weather App ⛅️</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
   <script src="https://kit.fontawesome.com/11f5c85466.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -17,7 +19,7 @@
     <div class="card mt-5 shadow mb-4">
       <div class="container-body">
 
-        <form>
+        <form id="search-form">
 
           <div class="row">
             <div class="col-md-8">
@@ -26,8 +28,7 @@
             </div>
 
             <div class="col">
-              <input type="submit" value="Search" id="submitbutton"
-                class=" col-sm btn btn-success input ps-4 pe-4 fs-5" />
+              <input type="submit" value="Search" id="submitbutton" class=" col-sm btn input ps-4 pe-4 fs-5" />
 
 
             </div>
@@ -37,95 +38,80 @@
 
         <div class="row country">
           <div class="col-md-6 mt-2 fs-5">
-            <h1 id="cityname">Iran</h1>
+            <h1 id="cityname"></h1>
 
-            <span class="text-secondary time">Sunny ☀ </span>
+            <div class="d-flex date text">
+              <p class="pt-1  mb-0" id="date"></p>
+              <span> , </span>
+              <span id="description"></span>
 
-            <p class="pt-1 text-secondary mb-0 time" id="day">Wednesday, 1 Sept 12:02</p>
+            </div>
+
+
           </div>
         </div>
 
         <div class="row px-2">
 
-          <div class="col-md-6 d-flex temp">
-
+          <div class="col-md-6 d-flex temp ">
             <div class="row">
-              <div>
-                <div class="col-md pt-3 " id="currenttemp">
-                  <span id="tempcelsius" class="size">30</span>
 
+              <div class="col-md " id="currenttemp">
 
-                  <span class="celsius size">ºC</span>
-                  <span class="fahrenheit size">|ºF</span>
+                <span id="tempcelsius" class="size"></span>
+                <div class="temp">
+                  <span href="#" id="fahrenheit" class="text-dark  text-decoration-none active">&#176F</span> |
+
+                  <span href="#" id="celsius" class="active">&#176C </span>
                 </div>
-                <div class="col-md pt-2">
-                  <p class="fs-6 px-2 mb-0 text-secondary">🌡 14%</p>
-                  <p class="fs-6 px-2 mb-0 col-md text-secondary"><i class="fas fa-wind wind"></i> NE 10 mph</p>
-                </div>
+
               </div>
+
             </div>
 
+            <div class="col-md pt-2  justify-content-center d-flex content">
 
-            <div class="col-md-6 weather fs-6 text-left   justify-content-center lh-2">
-              <p class="mb-0 ">Precipitation: 2%</p>
-              <p class="mb-0 ">Humidity : 76 %</p>
-              <p class="mb-0 ">Wind : 16 km/h</p>
+              <p class="fs-5 px-2 mb-0 text-secondary">🌡
+                <span id="wind" class="px-2"></span>
+              </p>
+
+              <p class="fs-5 pt-1 px-2 mb-0 col-md text-secondary">
+                <i class="fas fa-wind wind"></i>
+                <span id="feels-like"></span>
+                <span id="feels-like-temp">°</span>
+              </p>
+
+            </div>
+
+            <div class="col-md-6 weather fs-6 text-left d-flex gap-2  justify-content-center lh-2 weather">
+              <!-- <p class="mb-0 ">Precipitation: 2%</p> -->
+              <p class="mb-0 fs-6  text ">Humidity : <span id="humidity" class="color"></span>
+                <span class="color"> %</span>
+              </p>
+              <p class="mb-0 fs-6  text ">Wind-speed : <span id="wind" class="color"></span>
+                <span class="color"> km/h</span>
+              </p>
+
+              <div class="d-flex flex">
+
+                <p class="mb-0 fs-6  text ">High : <span id="High-temp" class="color"></span></p>
+
+                <div class="text px-3">|</div>
+
+                <p class="mb-0 fs-6  text ">Low: <span id="Low-temp" class="color"></span>
+                </p>
+              </div>
+
+
             </div>
 
 
           </div>
 
 
-          <div class="row  mt-4  text-center d-flex justify-content-center ">
-
-            <div class="col-md-2  forecast">
-              <p class="fs-4 mb-0 text-secondary">Thu</p>
-              <!-- <div> -->
-              <img src="images/sun.svg" class="img" alt="rain" width="60px" height="60px">
-              <!-- </div> -->
-              <p class="fs-4 pt-3 ">25°</p>
-            </div>
+          <div class="row  mt-5  text-center d-flex justify-content-center " id="forecast">
 
 
-            <div class="col-md-2   forecast">
-              <p class="fs-4  mb-0 text-secondary">Fri</p>
-              <div>
-                <!-- <i class="fas fa-sun"></i> -->
-
-                <img src="images/cloudy&sun.svg" alt="rain" width="60px" height="60px">
-              </div>
-              <p class="fs-4 pt-3">24°</p>
-            </div>
-
-
-            <div class="col-md-2 forecast">
-              <p class="fs-4 mb-0 text-secondary">Sat</p>
-              <div>
-                <!-- <i class="fas fa-cloud-rain"></i> -->
-                <img src="images/rainny.svg" alt="rain" width="60px" height="60px">
-              </div>
-              <p class="fs-4 pt-3">18°</p>
-            </div>
-
-
-            <div class="col-md-2 forecast">
-              <p class="fs-4 mb-0 text-secondary">Sun</p>
-              <div>
-                <!-- <i class="fas fa-cloud-sun"></i> -->
-                <img src="images/cloudy&sun.svg" alt="rain" width="60px" height="60px">
-              </div>
-              <p class="fs-4 pt-3">24°</p>
-            </div>
-
-            <div class="col-md-2 forecast">
-              <p class="fs-4 mb-0 text-secondary">Mon</p>
-              <div>
-                <!-- <i class="fas fa-cloud-rain"></i> -->
-                <img src="images/cloudy.svg" alt="rain" width="60px" height="60px">
-
-              </div>
-              <p class="fs-4 pt-3">20°</p>
-            </div>
           </div>
         </div>
       </div>
@@ -136,7 +122,7 @@
       Foroughi 👩🏻‍💻
     </small>
   </div>
-  <script src="src/index.js"></script>
+  <script src="index.js"></script>
 
 
 </body>
