@@ -5,13 +5,15 @@
 .container-body {
   padding: 30px;
 }
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .forecast {
   transition: all 0.25s ease-in-out;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* justify-content: center; */
   padding: 10px;
 }
 .forecast:hover {
@@ -24,7 +26,12 @@
   transition: all 0.25s ease-in-out;
 }
 .wind {
-  color: blue;
+  color: mediumpurple;
+}
+#submitbutton {
+  background-color: mediumpurple;
+  border: 1px solid mediumpurple;
+  color: #fff;
 }
 
 .wrapper {
@@ -42,8 +49,73 @@
 
 .time {
   font-size: medium;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .size {
-  font-size: 30px;
+  font-size: 60px;
+  padding-right: 20px;
+}
+.flex {
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.date {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.weather {
+  display: flex;
+  flex-direction: column;
+}
+.color {
+  color: mediumpurple;
+}
+.text {
+  font-size: medium;
+  font-weight: 600;
+  color: darkgrey;
+}
+
+.celsius {
+  position: relative;
+  top: -30px;
+  padding-left: 5px;
+  font-size: 25px;
+}
+
+#feels-like {
+  padding-left: 6px;
+}
+
+.weather-forecast {
+  font-weight: 700;
+  font-size: large;
+  color: darkgrey;
+}
+
+.weather-forecast-temperature-min {
+  color: darkgray;
+  font-size: large;
+  font-weight: 600;
+  padding-left: 5px;
+}
+
+.weather-forecast-temperature-max {
+  color: mediumpurple;
+  font-size: large;
+  font-weight: 600;
+}
+
+.active {
+  color: mediumpurple;
+}
+#currenttemp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
 }
