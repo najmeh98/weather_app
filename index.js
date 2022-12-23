@@ -172,4 +172,4 @@ celsiusLink.addEventListener("click", displyToCelsius);
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", displyToFahrenheit);
 
-searchCity("Germany");
+searchCity("Iran");
