@@ -57,13 +57,13 @@ function displayForecast(response) {
   console.log(response.data.daily);
   let foreCast = response.data.daily;
 
-  let forecastHTML = `<div class="row">`;
+  let forecastHTML = `<div class="row  flex gap-x-3">`;
 
   foreCast.forEach(function (forecastDay, index) {
-    if (index < 5) {
+    if (index < 6) {
       forecastHTML += `
-    <div class="col-2">
-        <div class="weather-forecast">${formatDay(forecastDay.dt)}</div>
+    <div class="col-2 forecast">
+        <div class="weather-forecast ">${formatDay(forecastDay.dt)}</div>
         <img
           src="http://openweathermap.org/img/wn/${
             forecastDay.weather[0].icon
@@ -105,7 +105,6 @@ function displayTemperature(response) {
   let temperatureElement = document.querySelector("#tempcelsius");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
-  let iconElement = document.querySelector("#icon");
   let feelsElement = document.querySelector("#feels-like");
   let hightTempElement = document.querySelector("#High-temp");
   let lowTempElement = document.querySelector("#Low-temp");

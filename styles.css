@@ -119,3 +119,17 @@
   justify-content: space-between;
   cursor: pointer;
 }
+
+@media screen and (max-width: 576px) {
+  .weather-forecast,
+  .weather-forecast-temperature-max,
+  .weather-forecast-temperature-min {
+    font-size: 14px;
+  }
+  .container-body {
+    padding: 10px;
+  }
+  .text {
+    font-size: small;
+  }
+}
